@@ -3,20 +3,46 @@ using System.Collections.Generic;
 
 class Car
 {
-  public string MakeModel;
-  public int Price;
-  public int Miles;
+  public string _makeModel;
+  private int _price;
+  private int _miles;
+
+  public void SetPrice(int carPrice)
+   {
+     if(carPrice >= 0)
+     {
+       _price = carPrice;
+     }
+     else
+     {
+       Console.WriteLine("The price for this item is not valid.");
+     }
+   }
+
+   public int GetPrice()
+   {
+     return _price;
+   }
+
+  public void SetMiles(int carMiles)
+   {
+     _miles = carMiles;
+   }
+   public int GetMiles()
+   {
+     return _miles;
+   }
 
   public bool WorthBuying(int maxPrice, int maxMiles)
   {
-    return(Price < (maxPrice+ 6000) && Miles < maxMiles);
+    return(_price < (maxPrice + 6000) && _miles < maxMiles);
   }
 
   public Car(string carMakeModel, int carPrice, int carMiles = 20000)
   {
-    MakeModel = carMakeModel;
-    Price = carPrice;
-    Miles = carMiles;
+    _makeModel = carMakeModel;
+    _price = carPrice;
+    _miles = carMiles;
   }
 }
 
@@ -52,7 +78,7 @@ public class Program
 
     foreach(Car automobile in CarsMatchingSearch)
     {
-      Console.WriteLine(automobile.MakeModel);
+      Console.WriteLine(automobile._makeModel);
     }
   }
 }
